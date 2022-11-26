@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { addBook } from "../redux/actions/actionAddBooks";
+import FlipMove from "react-flip-move";
 
 const AddBooks = ({ libraryData, addBook }) => {
     const initialState = {
@@ -23,22 +24,24 @@ const AddBooks = ({ libraryData, addBook }) => {
 
     const displayBooks =
         libraryData.length > 0 ? (
-            libraryData.map((book) => (
-                <li
-                    key={book.id}
-                    className="list-group-item list-group-item-light d-flex justify-content-between"
-                >
-                    <span>
-                        <strong>titre: </strong>
-                        {book.title}
-                    </span>
-                    <span>
-                        <strong>Auteur: </strong>
-                        {book.author}
-                    </span>
-                    <span className="btn btn-danger">X</span>
-                </li>
-            ))
+            <FlipMove>
+                {libraryData.map((book) => (
+                    <li
+                        key={book.id}
+                        className="list-group-item list-group-item-light d-flex justify-content-between"
+                    >
+                        <span>
+                            <strong>titre: </strong>
+                            {book.title}
+                        </span>
+                        <span>
+                            <strong>Auteur: </strong>
+                            {book.author}
+                        </span>
+                        <span className="btn btn-danger">X</span>
+                    </li>
+                ))}
+            </FlipMove>
         ) : (
             <p className="text-center">Aucun livres enregistré</p>
         );
