@@ -35,6 +35,10 @@ const addBooksReducer = (state = initialState.books, action) => {
             state = helperDeleteDataById(state, payload);
             upLocalStorage(state);
             return state;
+        case ACTION_TYPE.DELETE_ALL_BOOKS:
+            state = initialState.books;
+            upLocalStorage(state);
+            return state;
 
         default:
             return state;

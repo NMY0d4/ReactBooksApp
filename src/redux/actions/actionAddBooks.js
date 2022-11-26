@@ -13,3 +13,9 @@ export const deleteBook = (id) => {
         payload: id,
     };
 };
+
+export const deleteAllBooks = () => {
+    return {
+        type: ACTION_TYPE.DELETE_ALL_BOOKS,
+    };
+};
