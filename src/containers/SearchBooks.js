@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 function SearchBooks() {
+    const [search, setSearch] = useState("");
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // console.log(search);
+    };
+
+    // https://www.googleapis.com/books/v1/volumes?q=${title}&maxResults=20
+
     return (
         <main role="main">
             <div className="jumbotron jumbotron-fluid">
@@ -11,7 +20,7 @@ function SearchBooks() {
 
                     <form
                         className="row justify-content-center"
-                        // onSubmit={handleSubmit}
+                        onSubmit={handleSubmit}
                     >
                         <div className="col form-group">
                             <input
@@ -20,6 +29,8 @@ function SearchBooks() {
                                 className="form-control"
                                 placeholder="Description ici"
                                 required
+                                value={search}
+                                onChange={(e) => setSearch(e.target.value)}
                             ></input>
                         </div>
                         <div className="col-2 form-group">

@@ -17,5 +17,7 @@ code {
 }
 
 .nav-right {
+    margin-top: auto;
+    margin-bottom: auto;
     height: 50px;
 }
