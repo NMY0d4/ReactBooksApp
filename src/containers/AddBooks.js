@@ -1,28 +1,59 @@
-import React from "react";
+import React, { useState } from "react";
 
 const AddBooks = () => {
+    const initialState = {
+        title: "",
+        author: "",
+    };
+
+    const [newData, setNewData] = useState(initialState);
+
+    const { title, author } = newData;
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(newData);
+    };
+
     return (
         <main role="main">
             <div className="jumbotron jumbotron-fluid">
                 <div className="container text-center">
-                    <h1 className="display-4">BOOKS</h1>
+                    <h1 className="display-4">My BOOKS</h1>
 
                     <p>Ajouter un livre à votre bibliothèque</p>
 
-                    <form className="row justify-content-center">
+                    <form
+                        className="row justify-content-center"
+                        onSubmit={handleSubmit}
+                    >
                         <div className="col form-group">
                             <input
+                                value={title}
                                 type="text"
                                 className="form-control"
                                 placeholder="Titre"
+                                onChange={(e) =>
+                                    setNewData({
+                                        ...newData,
+                                        title: e.target.value,
+                                    })
+                                }
                                 required
                             ></input>
                         </div>
                         <div className="col form-group">
                             <input
+                                value={author}
                                 type="text"
                                 className="form-control ml-3"
                                 placeholder="Auteur"
+                                onChange={(e) =>
+                                    setNewData({
+                                        ...newData,
+                                        author: e.target.value,
+                                    })
+                                }
                                 required
                             ></input>
                         </div>
