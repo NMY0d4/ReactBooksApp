@@ -16,10 +16,38 @@ const AddBooks = ({ libraryData, addBook }) => {
         e.preventDefault();
         // console.log(newData);
         addBook(newData);
-        console.log(libraryData);
+        // console.log(libraryData);
         // vider le input:
         setNewData(initialState);
     };
+
+    const displayBooks =
+        libraryData.length > 0 ? (
+            libraryData.map((book) => (
+                <li
+                    key={book.id}
+                    className="list-group-item list-group-item-light d-flex justify-content-between"
+                >
+                    <span>
+                        <strong>titre: </strong>
+                        {book.title}
+                    </span>
+                    <span>
+                        <strong>Auteur: </strong>
+                        {book.author}
+                    </span>
+                    <span className="btn btn-danger">X</span>
+                </li>
+            ))
+        ) : (
+            <p className="text-center">Aucun livres enregistré</p>
+        );
+
+    const deleteAllBooks = libraryData.length > 1 && (
+        <button className="btn btn-danger mt-4 mb-5">
+            Effacer tous les livres
+        </button>
+    );
 
     return (
         <main role="main">
@@ -75,15 +103,9 @@ const AddBooks = ({ libraryData, addBook }) => {
             <div className="container" style={{ minHeight: "200px" }}>
                 <div className="row">
                     <div className="col-md-12">
-                        <ul className="list-group">
-                            <li className="list-group-item list-group-item-light d-flex justify-content-between">
-                                livres enregistrés ici
-                            </li>
-                        </ul>
+                        <ul className="list-group">{displayBooks}</ul>
                         <div className="d-flex justify-content-center">
-                            <button className="btn btn-danger mt-4 mb-5">
-                                Effacer tous les livres
-                            </button>
+                            {deleteAllBooks}
                         </div>
                     </div>
                 </div>
