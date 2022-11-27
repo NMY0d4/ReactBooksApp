@@ -7,6 +7,7 @@ function SearchBooks() {
 
     const state = useSelector((state) => state.search);
     const dispatch = useDispatch();
+
     console.log(state);
 
     const handleSubmit = (e) => {
