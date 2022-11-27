@@ -1,14 +1,19 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchBooks } from "../redux/actions/actionFetchBooks";
 
 function SearchBooks() {
     const [search, setSearch] = useState("");
 
+    const state = useSelector((state) => state.search);
+    const dispatch = useDispatch();
+    console.log(state);
+
     const handleSubmit = (e) => {
         e.preventDefault();
         // console.log(search);
+        dispatch(fetchBooks(search));
     };
-
-    // https://www.googleapis.com/books/v1/volumes?q=${title}&maxResults=20
 
     return (
         <main role="main">
