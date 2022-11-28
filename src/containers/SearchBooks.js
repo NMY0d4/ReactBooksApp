@@ -8,7 +8,7 @@ function SearchBooks() {
     const state = useSelector((state) => state.search);
     const dispatch = useDispatch();
 
-    console.log(state);
+    // console.log(state);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -18,9 +18,7 @@ function SearchBooks() {
 
     const displayFetchedBooks = state.isLoading ? (
         <div className="d-flex justify-content-center">
-            <div className="spinner-border text-info" role="status">
-                <span>Chargement...</span>
-            </div>
+            <div className="spinner-border text-info" role="status"></div>
         </div>
     ) : state.error !== "" ? (
         <p>{state.error}</p>
@@ -39,21 +37,33 @@ function SearchBooks() {
                         </button>
                     </h5>
                 </div>
-                <div id={book.id} className="collapse" data-parent="accordion">
+                <div id={book.id} className="collapse" data-parent="#accordion">
                     <div className="card-body">
-                        <img
-                            src={book.volumeInfo.imageLinks.thumbnail}
-                            alt={book.volumeInfo.title}
-                        ></img>
-                        {/*
-                                    -image
-                                    -Titre
-                                    -Auteur
-                                    -description
-                                    -Btn plus d'infos
-                                    -Btn Enregistrer                                    
-                                    
-                                     */}
+                        {book.volumeInfo.hasOwnProperty("imageLinks") && (
+                            <img
+                                src={book.volumeInfo.imageLinks.thumbnail}
+                                alt={book.volumeInfo.title}
+                            />
+                        )}
+                        <br />
+                        <h4 className="card-title">{book.volumeInfo.title}</h4>
+                        <h5 className="card-title">
+                            Auteur: {book.volumeInfo.authors}
+                        </h5>
+                        <p className="card-text">
+                            Description: {book.volumeInfo.description}
+                        </p>
+                        <a
+                            href={book.volumeInfo.previewLink}
+                            className="btn btn-outline-secondary"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Plus d'infos
+                        </a>
+                        <button className="btn btn-outline-secondary ml-3">
+                            Enregistrer
+                        </button>
                     </div>
                 </div>
             </div>
@@ -93,7 +103,7 @@ function SearchBooks() {
             </div>
 
             <div className="container" style={{ minHeight: "200px" }}>
-                <div className="accordion">{displayFetchedBooks}</div>
+                <div id="accordion">{displayFetchedBooks}</div>
             </div>
         </main>
     );

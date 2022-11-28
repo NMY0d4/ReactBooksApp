@@ -22,7 +22,6 @@ const fetchBooksError = (error) => {
 };
 
 const MY_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
-console.log(MY_API_KEY);
 
 export const fetchBooks = (title) => {
     return (dispatch) => {
