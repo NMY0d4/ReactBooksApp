@@ -16,6 +16,50 @@ function SearchBooks() {
         dispatch(fetchBooks(search));
     };
 
+    const displayFetchedBooks = state.isLoading ? (
+        <div className="d-flex justify-content-center">
+            <div className="spinner-border text-info" role="status">
+                <span>Chargement...</span>
+            </div>
+        </div>
+    ) : state.error !== "" ? (
+        <p>{state.error}</p>
+    ) : (
+        state.fetchBooks.map((book) => (
+            <div className="card mb-2" key={book.id}>
+                <div className="card-header">
+                    <h5 className="mb-0">
+                        <button
+                            className="btn btn-link collapsed"
+                            data-toggle="collapse"
+                            data-target={`#${book.id}`}
+                            aria-expanded="false"
+                        >
+                            {book.volumeInfo.title}
+                        </button>
+                    </h5>
+                </div>
+                <div id={book.id} className="collapse" data-parent="accordion">
+                    <div className="card-body">
+                        <img
+                            src={book.volumeInfo.imageLinks.thumbnail}
+                            alt={book.volumeInfo.title}
+                        ></img>
+                        {/*
+                                    -image
+                                    -Titre
+                                    -Auteur
+                                    -description
+                                    -Btn plus d'infos
+                                    -Btn Enregistrer                                    
+                                    
+                                     */}
+                    </div>
+                </div>
+            </div>
+        ))
+    );
+
     return (
         <main role="main">
             <div className="jumbotron jumbotron-fluid">
@@ -49,24 +93,7 @@ function SearchBooks() {
             </div>
 
             <div className="container" style={{ minHeight: "200px" }}>
-                <div className="accordion">
-                    <div className="card mb-2">
-                        <div className="card-header"></div>
-                        <div className="collapse" data-parent="accordion">
-                            <div className="card-body">
-                                {/*
-                                    -image
-                                    -Titre
-                                    -Auteur
-                                    -description
-                                    -Btn plus d'infos
-                                    -Btn Enregistrer                                    
-                                    
-                                     */}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div className="accordion">{displayFetchedBooks}</div>
             </div>
         </main>
     );
