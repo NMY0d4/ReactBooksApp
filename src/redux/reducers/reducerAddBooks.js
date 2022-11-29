@@ -9,8 +9,9 @@ const upLocalStorage = (state) =>
     localStorage.setItem("booksData", JSON.stringify(state));
 
 const helperAddData = (payload) => {
+    const id = payload.id ? payload.id : uuiv4();
     return {
-        id: uuiv4(),
+        id,
         title: payload.title,
         author: payload.author,
     };

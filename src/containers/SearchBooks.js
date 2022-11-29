@@ -1,19 +1,29 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { addBook } from "../redux/actions/actionAddBooks";
 import { fetchBooks } from "../redux/actions/actionFetchBooks";
 
 function SearchBooks() {
     const [search, setSearch] = useState("");
 
     const state = useSelector((state) => state.search);
+    const books = useSelector((state) => state.library);
+    const idBooks = books.map((book) => book.id);
     const dispatch = useDispatch();
 
-    // console.log(state);
+    console.log(idBooks);
 
-    const handleSubmit = (e) => {
+    const handleSubmitFetchBooks = (e) => {
         e.preventDefault();
         // console.log(search);
         dispatch(fetchBooks(search));
+    };
+
+    const handleSubmitSaveBook = (e, book) => {
+        e.preventDefault();
+        // console.log(newData);
+        dispatch(addBook(book));
+        // console.log(libraryData);
     };
 
     const displayFetchedBooks = state.isLoading ? (
@@ -61,9 +71,24 @@ function SearchBooks() {
                         >
                             Plus d'infos
                         </a>
-                        <button className="btn btn-outline-secondary ml-3">
-                            Enregistrer
-                        </button>
+                        {!idBooks.includes(book.id) ? (
+                            <button
+                                className="btn btn-outline-secondary ml-3"
+                                onClick={(e) =>
+                                    handleSubmitSaveBook(e, {
+                                        id: book.id,
+                                        title: book.volumeInfo.title,
+                                        author: book.volumeInfo.authors[0],
+                                    })
+                                }
+                            >
+                                Enregistrer
+                            </button>
+                        ) : (
+                            <strong className="text-danger ml-3">
+                                déjà enregistré
+                            </strong>
+                        )}
                     </div>
                 </div>
             </div>
@@ -80,7 +105,7 @@ function SearchBooks() {
 
                     <form
                         className="row justify-content-center"
-                        onSubmit={handleSubmit}
+                        onSubmit={handleSubmitFetchBooks}
                     >
                         <div className="col form-group">
                             <input
