@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addBook } from "../redux/actions/actionAddBooks";
 import { fetchBooks } from "../redux/actions/actionFetchBooks";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function SearchBooks() {
     const [search, setSearch] = useState("");
@@ -11,7 +13,7 @@ function SearchBooks() {
     const idBooks = books.map((book) => book.id);
     const dispatch = useDispatch();
 
-    console.log(idBooks);
+    // console.log(idBooks);
 
     const handleSubmitFetchBooks = (e) => {
         e.preventDefault();
@@ -24,6 +26,9 @@ function SearchBooks() {
         // console.log(newData);
         dispatch(addBook(book));
         // console.log(libraryData);
+        toast.info("livre enregistré", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+        });
     };
 
     const displayFetchedBooks = state.isLoading ? (

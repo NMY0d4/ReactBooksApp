@@ -34,11 +34,11 @@ const AddBooks = ({ libraryData, addBook, deleteBook, deleteAllBooks }) => {
                         key={book.id}
                         className="list-group-item list-group-item-light d-flex justify-content-between"
                     >
-                        <span>
+                        <span className="li-book-span">
                             <strong>titre: </strong>
                             {book.title}
                         </span>
-                        <span>
+                        <span className="li-book-span">
                             <strong>Auteur: </strong>
                             {book.author}
                         </span>
