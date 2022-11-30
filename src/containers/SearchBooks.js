@@ -12,6 +12,17 @@ function SearchBooks() {
     const books = useSelector((state) => state.library);
     const idBooks = books.map((book) => book.id);
     const dispatch = useDispatch();
+    const notify = () =>
+        toast("🦄 livre enregistré", {
+            position: "bottom-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
 
     // console.log(idBooks);
 
@@ -25,10 +36,8 @@ function SearchBooks() {
         e.preventDefault();
         // console.log(newData);
         dispatch(addBook(book));
+        notify();
         // console.log(libraryData);
-        toast.info("livre enregistré", {
-            position: toast.POSITION.BOTTOM_RIGHT,
-        });
     };
 
     const displayFetchedBooks = state.isLoading ? (
@@ -135,6 +144,7 @@ function SearchBooks() {
             <div className="container" style={{ minHeight: "200px" }}>
                 <div id="accordion">{displayFetchedBooks}</div>
             </div>
+            <ToastContainer />
         </main>
     );
 }
