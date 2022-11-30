@@ -7,6 +7,16 @@ body {
     height: 100%;
 }
 
+.form-control,
+.collapsed,
+.li-book-span {
+    font-size: 1.5rem !important;
+}
+
+.btn {
+    font-size: 1.3rem !important;
+}
+
 #headerLogo {
     width: 4rem;
     margin-right: 0.5rem;
