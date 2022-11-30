@@ -68,9 +68,11 @@ const AddBooks = ({ libraryData, addBook, deleteBook, deleteAllBooks }) => {
         <main role="main">
             <div className="jumbotron jumbotron-fluid">
                 <div className="container text-center">
-                    <h1 className="display-4">My BOOKS</h1>
+                    <h1 className="title display-4">My BOOKS</h1>
 
-                    <p>Ajouter un livre à votre bibliothèque</p>
+                    <p className="subtitle">
+                        Ajouter un livre à votre bibliothèque
+                    </p>
 
                     <form
                         className="row justify-content-center"
@@ -108,7 +110,7 @@ const AddBooks = ({ libraryData, addBook, deleteBook, deleteAllBooks }) => {
                         </div>
                         <div className="col-2 form-group">
                             <button className="btn btn-outline-secondary ml-3">
-                                Ajouter un livre
+                                Ajouter
                             </button>
                         </div>
                     </form>
