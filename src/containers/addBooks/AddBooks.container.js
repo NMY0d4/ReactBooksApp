@@ -4,7 +4,7 @@ import {
     addBook,
     deleteAllBooks,
     deleteBook,
-} from "../redux/actions/actionAddBooks";
+} from "../../redux/actions/actionAddBooks";
 import FlipMove from "react-flip-move";
 
 const AddBooks = ({ libraryData, addBook, deleteBook, deleteAllBooks }) => {
