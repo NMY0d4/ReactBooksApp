@@ -40,14 +40,3 @@ body {
 .subtitle {
     font-size: 1.4rem;
 }
-
-main {
-    min-height: 76vh;
-}
-
-footer,
-main:after {
-    /* .push must be the same height as footer */
-    height: 5rem;
-    margin-top: 5rem;
-}
