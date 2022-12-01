@@ -4,6 +4,7 @@ import { addBook } from "../redux/actions/actionAddBooks";
 import { fetchBooks } from "../redux/actions/actionFetchBooks";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { GeneralMain } from "../GeneralMain.styles";
 
 function SearchBooks() {
     const [search, setSearch] = useState("");
@@ -110,7 +111,7 @@ function SearchBooks() {
     );
 
     return (
-        <main role="main">
+        <GeneralMain role="main">
             <div className="jumbotron jumbotron-fluid">
                 <div className="container text-center">
                     <h1 className="display-4">My BOOKS</h1>
@@ -145,7 +146,7 @@ function SearchBooks() {
                 <div id="accordion">{displayFetchedBooks}</div>
             </div>
             <ToastContainer />
-        </main>
+        </GeneralMain>
     );
 }
 

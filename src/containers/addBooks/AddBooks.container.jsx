@@ -6,7 +6,7 @@ import {
     deleteBook,
 } from "../../redux/actions/actionAddBooks";
 import FlipMove from "react-flip-move";
-import { AddBooksMain } from "./Addbooks.styles";
+import { GeneralMain } from "../../GeneralMain.styles";
 
 const AddBooks = ({ libraryData, addBook, deleteBook, deleteAllBooks }) => {
     const initialState = {
@@ -66,7 +66,7 @@ const AddBooks = ({ libraryData, addBook, deleteBook, deleteAllBooks }) => {
     );
 
     return (
-        <AddBooksMain role="main">
+        <GeneralMain role="main">
             <div className="jumbotron jumbotron-fluid">
                 <div className="container text-center">
                     <h1 className="title display-4">My BOOKS</h1>
@@ -128,7 +128,7 @@ const AddBooks = ({ libraryData, addBook, deleteBook, deleteAllBooks }) => {
                     </div>
                 </div>
             </div>
-        </AddBooksMain>
+        </GeneralMain>
     );
 };
 
