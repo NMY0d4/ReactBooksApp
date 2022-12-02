@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addBook } from "../redux/actions/actionAddBooks";
-import { fetchBooks } from "../redux/actions/actionFetchBooks";
+import { addBook } from "../../redux/actions/actionAddBooks";
+import { fetchBooks } from "../../redux/actions/actionFetchBooks";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { GeneralMain } from "../GeneralMain.styles";
+import { GeneralMain } from "../../GeneralMain.styles";
+import { CardBody } from "./SearchBooks.styles";
 
 function SearchBooks() {
     const [search, setSearch] = useState("");
@@ -51,7 +52,7 @@ function SearchBooks() {
         state.fetchBooks.map((book) => (
             <div className="card mb-2" key={book.id}>
                 <div className="card-header">
-                    <h5 className="mb-0">
+                    <h5 className="mb-0 text-center">
                         <button
                             className="btn btn-link collapsed"
                             data-toggle="collapse"
@@ -67,7 +68,7 @@ function SearchBooks() {
                     className="collapse"
                     data-parent="#accordion"
                 >
-                    <div className="card-body">
+                    <CardBody className="card-body">
                         {book.volumeInfo.hasOwnProperty("imageLinks") && (
                             <img
                                 src={book.volumeInfo.imageLinks.thumbnail}
@@ -108,7 +109,7 @@ function SearchBooks() {
                                 déjà enregistré
                             </strong>
                         )}
-                    </div>
+                    </CardBody>
                 </div>
             </div>
         ))

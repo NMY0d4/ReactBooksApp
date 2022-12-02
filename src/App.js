@@ -1,8 +1,8 @@
 import Footer from "./components/Footer/Footer.components";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar.components";
-import AddBooks from "./containers/addBooks/AddBooks.container";
-import SearchBooks from "./containers/SearchBooks";
+import AddBooks from "./containers/addBooks/AddBooks.containers";
+import SearchBooks from "./containers/searchBooks/SearchBooks.containers";
 
 function App() {
     return (
