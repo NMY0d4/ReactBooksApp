@@ -14,7 +14,7 @@ function SearchBooks() {
     const idBooks = books.map((book) => book.id);
     const dispatch = useDispatch();
     const notify = () =>
-        toast("🦄 livre enregistré", {
+        toast("📚 livre enregistré", {
             position: "bottom-right",
             autoClose: 3000,
             hideProgressBar: false,
@@ -55,14 +55,18 @@ function SearchBooks() {
                         <button
                             className="btn btn-link collapsed"
                             data-toggle="collapse"
-                            data-target={`#${book.id}`}
+                            data-target={`#i${book.id}`}
                             aria-expanded="false"
                         >
                             {book.volumeInfo.title}
                         </button>
                     </h5>
                 </div>
-                <div id={book.id} className="collapse" data-parent="#accordion">
+                <div
+                    id={`i${book.id}`}
+                    className="collapse"
+                    data-parent="#accordion"
+                >
                     <div className="card-body">
                         {book.volumeInfo.hasOwnProperty("imageLinks") && (
                             <img
